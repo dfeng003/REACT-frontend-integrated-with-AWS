@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import Home from './Home'
+import Banner from './Banner'
 import Header from './Header'
 import Footer from './Footer'
 import SearchPage from './SearchPage'
@@ -20,7 +20,7 @@ function App() {
             <SearchPage />
           </Route>
           <Route path="/">
-            <Home />
+            <Banner />
           </Route>
         </Switch>
         

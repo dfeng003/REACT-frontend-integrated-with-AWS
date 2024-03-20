@@ -11,7 +11,7 @@ function Header() {
             <Link to='/'>
                 <img
                     className="header__icon"
-                    src="/images/logo.png"
+                    src="./logo.PNG"
                     alt=""
                   />
             </Link>

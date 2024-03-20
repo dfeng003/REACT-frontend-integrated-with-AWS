@@ -6,6 +6,19 @@ import Footer from './Footer'
 import SearchPage from './SearchPage'
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import {Amplify, Auth } from 'aws-amplify';
+import { withAuthenticator } from '@aws-amplify/ui-react';
+import '@aws-amplify/ui-react/styles.css';
+
+Amplify.configure({
+   Auth: {
+       Cognito:{
+           userPoolId: "us-east-1_8465UNBWQ",
+           userPoolClientId: "1k6krv82nbk8ph1adu726trevj",
+           region: "us-east-1"
+       }
+   }});
+
 
 function App() {
   return (
@@ -30,4 +43,4 @@ function App() {
   );
 }
 
-export default App;
+export default withAuthenticator(App);

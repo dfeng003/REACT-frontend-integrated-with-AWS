@@ -4,7 +4,7 @@ import Banner from './Banner'
 import Header from './Header'
 import Footer from './Footer'
 import SearchPage from './SearchPage'
-
+import BecomeGuideForm from './BecomeGuideForm';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import {Amplify, Auth } from 'aws-amplify';
 import { withAuthenticator } from '@aws-amplify/ui-react';
@@ -20,17 +20,21 @@ Amplify.configure({
    }});
 
 
-function App() {
-  return (
+function App({ signOut}) {
+//When withAuthenticator wraps the App component, it automatically injects the signOut method into the props of the component.
 
-    // BEM
+  return (
     <div className="app">
       <Router>
-        <Header />
+        <Header signOut={signOut}/> {/* Pass signOut method as a prop */}
         
         <Switch>
+
           <Route path="/search">
             <SearchPage />
+          </Route>
+          <Route path="/become_guide">
+            <BecomeGuideForm />
           </Route>
           <Route path="/">
             <Banner />

@@ -1,0 +1,44 @@
+.profile {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+.profile h2 {
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.profile div {
+  margin-bottom: 15px;
+}
+
+.profile strong {
+  font-weight: bold;
+}
+
+.profile ul {
+  list-style: none;
+  padding: 0;
+}
+
+.profile li {
+  margin-top: 5px;
+}
+
+/* Style for list items */
+.profile li:before {
+  content: "•"; /* Bullet character */
+  color: #333;
+  display: inline-block;
+  width: 1em;
+  margin-left: -1em;
+}
+
+/* Style for alternating list items */
+.profile li:nth-child(even):before {
+  color: #ccc;
+}

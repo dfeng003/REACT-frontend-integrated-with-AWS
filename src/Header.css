@@ -48,8 +48,22 @@
 
 .header__guideButton {
   background-color: white;
-  font-weight: 500;
-  text-transform: inherit;
-  color: #6282a0;
+  text-transform: inherit !important;;
+  color: #6282a0 !important;
   border: none;
+}
+
+.avatar_dropdown{
+    position: absolute;
+    top: 75px;
+    right: 1.5%;
+    background-color: #f7f7f7;
+    border-radius: 3px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.dropdown_item{
+    text-transform: inherit !important;
+    color: #6282a0 !important;
+    width: 100%;
 }

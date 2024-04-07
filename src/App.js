@@ -17,8 +17,17 @@ Amplify.configure({
            userPoolId: "us-east-1_8465UNBWQ",
            userPoolClientId: "1k6krv82nbk8ph1adu726trevj",
            region: "us-east-1"
+           // TODO: need identitypoolid
        }
-   }});
+   },
+   Storage: {
+              // Configuration for S3 storage
+              S3: {
+                  bucket: 'sgguide', // Replace with your bucket name
+                  region: 'us-east-1' // Replace with the region of your bucket
+              }
+   }
+   });
 
 
 function App({ signOut}) {

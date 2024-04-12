@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import './Banner.css'
+import Filters from './Filters'
 import { Button} from "@material-ui/core";
 import { useHistory } from "react-router-dom";
 import SearchIcon from "@material-ui/icons/Search";
@@ -10,7 +11,23 @@ const { beforeToday,} = DateRangePicker;
 
 function Banner() {
     const history = useHistory();
-    const [showSearch, setShowSearch] = useState(false);
+    const [isFiltersOpen, setIsFiltersOpen] = useState(false);
+    const [selectedFilters, setSelectedFilters] = useState({});
+
+    const toggleFilters = () => {
+        setIsFiltersOpen(!isFiltersOpen);
+    };
+
+    const handleFilterConfirm = (filters) => {
+        setSelectedFilters(filters);
+        setIsFiltersOpen(false);
+        console.log("Filters Selected:", filters);
+    };
+
+    const handleSearch = () => {
+        // TODO: API call
+        console.log("Sending search request:", selectedFilters);
+    };
 
     return (
         <div className='banner'>
@@ -25,8 +42,11 @@ function Banner() {
                 <div className='banner__date'>
                     <DateRangePicker disabledDate={beforeToday()}/>
                 </div>
-                <Button className='banner__searchButton' variant='outlined'>Filters</Button>
-                <SearchIcon fontSize="large" className='banner__searchIcon'/>
+                <Button onClick={toggleFilters} className='banner__searchButton' variant='outlined'>Filters</Button>
+                {isFiltersOpen && (
+                    <Filters isOpen={isFiltersOpen} onClose={toggleFilters} onConfirm={handleFilterConfirm} />
+                 )}
+                <SearchIcon onClick={() => history.push('/search')} variant='outlined' fontSize="large" className='banner__searchIcon'/>
             </div>
 
         </div>

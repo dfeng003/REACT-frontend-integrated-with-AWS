@@ -6,8 +6,7 @@ const mockProfileData = {
   name: 'John Doe',
   gender: 'Male',
   language: 'English',
-  attractions: ['Sentosa', 'MacRitchie', 'National Museum'],
-  expertiseFields: ['Nature', 'History']
+  attractions: ["Museums", "Zoos", "Aquariums", "Beaches"]
 };
 
 // TODO: call API to retrieve data
@@ -30,14 +29,6 @@ function ProfilePage(){
         <ul>
           {mockProfileData.attractions.map((attraction, index) => (
             <li key={index}>{attraction}</li>
-          ))}
-        </ul>
-      </div>
-      <div>
-        <strong>Expertise Fields:</strong>
-        <ul>
-          {mockProfileData.expertiseFields.map((field, index) => (
-            <li key={index}>{field}</li>
           ))}
         </ul>
       </div>

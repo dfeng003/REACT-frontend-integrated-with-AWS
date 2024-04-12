@@ -5,6 +5,10 @@ import { useAuthenticator } from '@aws-amplify/ui-react';
 //import { getCurrentUser } from 'aws-amplify/auth';
 
 function BecomeGuideForm() {
+      const languages = ["English", "Chinese", "Japanese", "Korean", "Spanish", "French", "German", "Italian"];
+      const attractions = ["Museums", "Zoos", "Aquariums", "Beaches", "Historical Sites", "Art Galleries",
+                            "Amusement Parks", "Botanical Gardens", "Hiking Tracks", "Local Cuisines"]
+
     //TODO: get current username
     const [formData, setFormData] = useState({
       username:'',
@@ -12,9 +16,9 @@ function BecomeGuideForm() {
       gender: '',
       email:'',
       phone:'',
+      description:'',
       language: '',
       attractions: '',
-      expertise: '',
       photoUrl:'',
     });
 
@@ -53,7 +57,7 @@ function BecomeGuideForm() {
         <h2 className="form-title">Enter your information</h2>
         <form onSubmit={handleSubmit}>
           <div className="form-group">
-            <label htmlFor="name" className="form-label">Name:</label>
+            <label className="form-label">Name:</label>
             <input
               type="text"
               id="name"
@@ -65,7 +69,18 @@ function BecomeGuideForm() {
             />
           </div>
           <div className="form-group">
-            <label htmlFor="email" className="form-label">Email:</label>
+              <label  className="form-label">Description:</label>
+              <textarea
+                id="description"
+                name="description"
+                className="form-input"
+                value={formData.description}
+                onChange={handleChange}
+                required
+              />
+            </div>
+          <div className="form-group">
+            <label className="form-label">Email:</label>
             <input
                 type="text"
                 id="email"
@@ -77,7 +92,7 @@ function BecomeGuideForm() {
               />
           </div>
           <div className="form-group">
-            <label htmlFor="phone" className="form-label">Phone:</label>
+            <label className="form-label">Phone:</label>
             <input
               type="text"
               id="phone"
@@ -89,7 +104,7 @@ function BecomeGuideForm() {
             />
           </div>
           <div className="form-group">
-            <label htmlFor="gender" className="form-label">Gender:</label>
+            <label className="form-label">Gender:</label>
             <select
               id="gender"
               name="gender"
@@ -104,43 +119,36 @@ function BecomeGuideForm() {
             </select>
           </div>
           <div className="form-group">
-            <label htmlFor="language" className="form-label">Language:</label>
-            <input
-              type="text"
-              id="language"
-              name="language"
-              className="form-input"
-              value={formData.language}
-              onChange={handleChange}
-              required
-            />
+            <label className="form-label">Language:</label>
+            <div className="filters-container">
+              {languages.map((language, index) => (
+                <div key={index} className="filters-checkbox">
+                  <label>
+                    <input type="checkbox" value={language} onChange={handleChange} />
+                    {language}
+                  </label>
+                </div>
+              ))}
+            </div>
           </div>
           <div className="form-group">
-            <label htmlFor="attractions" className="form-label">Attractions:</label>
-            <textarea
-              id="attractions"
-              name="attractions"
-              className="form-input"
-              value={formData.attractions}
-              onChange={handleChange}
-              required
-            />
+            <label className="form-label">Attractions:</label>
+            <div className="filters-container">
+                {attractions.map((attraction, index) => (
+                  <div key={index} className="form-checkbox">
+                    <label>
+                      <input type="checkbox" value={attraction} onChange={handleChange} />
+                      {attraction}
+                    </label>
+                  </div>
+                ))}
+              </div>
           </div>
-          <div className="form-group">
-            <label htmlFor="expertise" className="form-label">Expertise:</label>
-            <textarea
-              id="expertise"
-              name="expertise"
-              className="form-input"
-              value={formData.expertise}
-              onChange={handleChange}
-              required
-            />
+          <div>
+            <label className="form-label">Profile Photo:</label>
+              <input type="file" onChange={handleFileChange} />
+              <button onClick={handleUpload}>Upload</button>
           </div>
-                    <div>
-                        <input type="file" onChange={handleFileChange} />
-                        <button onClick={handleUpload}>Upload</button>
-                    </div>
           <button type="submit" className="form-submit">Submit</button>
         </form>
       </div>

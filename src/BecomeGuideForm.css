@@ -1,6 +1,6 @@
 /* Container */
 .form-container {
-  width: 400px;
+  width: 600px;
   margin: auto;
   padding: 20px;
   border: 1px solid #ccc;
@@ -15,7 +15,10 @@
   margin-bottom: 20px;
 }
 
-/* Form inputs */
+.form-label{
+  color: #6282a0;
+}
+
 .form-group {
   margin-bottom: 15px;
 }
@@ -60,9 +63,15 @@
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  margin-top: 20px;
 }
 
 .form-submit:hover {
   background-color: #21477c;
   color: #6282a0;
+}
+
+.form-checkbox {
+  display: inline-block;
+  margin-bottom: 5px;
 }

@@ -1,19 +1,35 @@
-.searchPage__info {
-    padding: 20px;
-  }
-
-.searchPage__info > p {
-    margin-bottom: 10px;
-    font-size: 14px;
-}
 
 .searchPage__info > h1 {
-    margin-bottom: 30px;
+    margin-left: 20px;
 }
 
-.searchPage__info > button {
-    border-radius: 30px;
-    text-transform: inherit;
-    margin: 5px;
-  }
-  
+.pagination {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+}
+
+.pagination li {
+    display: inline-block;
+    margin: 0 5px;
+}
+
+.pagination li a {
+    color: #333;
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    text-decoration: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.pagination li.active a {
+    background-color: #6282a0;
+    color: #fff;
+}
+
+.pagination li.disabled a {
+    pointer-events: none;
+    color: #ccc;
+}

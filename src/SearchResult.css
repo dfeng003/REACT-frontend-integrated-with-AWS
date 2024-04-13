@@ -1,7 +1,7 @@
 .searchResult {
     display: flex;
     position: relative;
-    margin: 20px;
+    margin-left: 20px;
     padding: 20px;
     border-bottom: 1px solid lightgray;
     cursor: pointer;

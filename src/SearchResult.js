@@ -5,12 +5,10 @@ import StarIcon from "@material-ui/icons/Star";
 
 function SearchResult({
     img,
-    location,
-    title,
+    attractions,
+    name,
     description,
     star,
-    price,
-    total,
 }) {
     return (
         <div className='searchResult'>
@@ -19,8 +17,8 @@ function SearchResult({
 
             <div className='searchResult__info'>
                 <div className="searchResult__infoTop">
-                    <p>{location}</p>
-                    <h3>{title}</h3>
+                    <p>{attractions}</p>
+                    <h3>{name}</h3>
                     <p>____</p>
                     <p>{description}</p>
                 </div>
@@ -31,10 +29,6 @@ function SearchResult({
                         <p>
                             <strong>{star}</strong>
                         </p>
-                    </div>
-                    <div className='searchResults__price'>
-                        <h2>{price}</h2>
-                        <p>{total}</p>
                     </div>
                 </div>
             </div>

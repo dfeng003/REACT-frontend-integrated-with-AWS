@@ -39,7 +39,8 @@
 
 .banner__searchIcon {
   margin-left: 10px;
-  color: white
+  color: white;
+  cursor: pointer;
 }
 
 .banner__info > button {

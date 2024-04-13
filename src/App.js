@@ -1,4 +1,4 @@
-import React from 'react';
+import React , {useEffect, useState} from 'react';
 import './App.css';
 import Banner from './Banner'
 import Header from './Header'
@@ -32,13 +32,13 @@ Amplify.configure({
    });
 
 
-function App({ signOut}) {
+function App({ signOut, user}) {
 //When withAuthenticator wraps the App component, it automatically injects the signOut method into the props of the component.
 
   return (
     <div className="app">
       <Router>
-        <Header signOut={signOut}/> {/* Pass signOut method as a prop */}
+        <Header signOut={signOut} username={user.username}/> {/* Pass signOut method as a prop */}
         
         <Switch>
 

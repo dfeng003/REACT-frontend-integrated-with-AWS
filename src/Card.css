@@ -5,6 +5,7 @@
   box-shadow: 0px 6px 18px -9px rgba(0, 0, 0, 0.75);
   transition: transform 100ms ease-in;
   cursor: pointer;
+  width: 300px;
 }
 
 .card:hover {
@@ -21,8 +22,8 @@
 .card__info {
     margin-top: -9px;
     border-radius: 10px;
-    padding: 20px;
-    padding-top: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
     border: 1;
   }
 
@@ -37,3 +38,19 @@
     margin-top: 8px;
     margin-bottom: 8px;
   }
+
+.card__description{
+    height: 100px;
+}
+.card__stars {
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+    padding-bottom: 10px;
+    height: 40px;
+    bottom: 0;
+}
+
+.card__star {
+    color: orange;
+}

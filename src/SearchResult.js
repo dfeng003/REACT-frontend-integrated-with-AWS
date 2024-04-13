@@ -1,7 +1,6 @@
 import React from 'react';
 import './SearchResult.css';
 import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
-import StarIcon from "@material-ui/icons/Star";
 
 function SearchResult({
     img,
@@ -21,16 +20,6 @@ function SearchResult({
                     <p>____</p>
                     <p>{content.length > 500 ? content.substring(0, 500) + "..." : content}</p>
                 </div>
-            {/*
-                <div className="searchResult__infoBottom">
-                    <div className="searchResult__stars">
-                        <StarIcon className="searchResult__star" />
-                        <p>
-                            <strong>{star}</strong>
-                        </p>
-                    </div>
-                </div>
-            */}
             </div>
         </div>
     )

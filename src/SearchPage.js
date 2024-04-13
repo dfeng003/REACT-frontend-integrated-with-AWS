@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './SearchPage.css';
 import { Button } from "@material-ui/core";
-import SearchResult from "./SearchResult";
+import Card from "./Card";
 import ReactPaginate from 'react-paginate';
 
 
@@ -10,7 +10,7 @@ function SearchPage() {
                                   {
                                       "username": "testUser1",
                                       "name": "Guide 1",
-                                      "description": "Description of the guide",
+                                      "description": "This is a long description. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                                       "languages": ["English", "French"],
                                       "attractions": ["Museums", "Zoos"],
                                       "photoUrl": "https://www.expatkings.com/wp-content/uploads/2018/10/Airbnb-rental-tips.-Hostmaker-1-620x349.jpg",
@@ -55,9 +55,6 @@ function SearchPage() {
 
     return (
         <div className='searchPage'>
-            <div className='searchPage__info'>
-                <h1>Guides found</h1>
-            </div>
             <ReactPaginate
                 pageCount={pageCount}
                 pageRangeDisplayed={5}
@@ -66,15 +63,17 @@ function SearchPage() {
                 containerClassName={'pagination'}
                 activeClassName={'active'}
             />
-            {guides.map(guide => (
-                <SearchResult
-                    img={guide.photoUrl}
-                    attractions={guide.attractions.join(', ')}
-                    name={guide.name}
-                    description={guide.description}
-                    star={guide.score}
-                />
-            ))}
+            <div className='searchPage__guides'>
+                {guides.map(guide => (
+                    <Card
+                        src={guide.photoUrl}
+                        tags={guide.attractions.join(', ')}
+                        title={guide.name}
+                        description={guide.description}
+                        score={guide.score}
+                    />
+                ))}
+            </div>
         </div>
     )
 }

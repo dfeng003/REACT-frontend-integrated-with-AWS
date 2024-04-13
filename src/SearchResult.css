@@ -52,17 +52,6 @@
     justify-content: space-between;
 }
 
-
-.searchResult__star {
-    color: red;
-}
-
-
-.searchResult__stars {
-    display: flex;
-    align-items: center;
-}
-
 .searchResults__price > p {
     text-align: right;
   }

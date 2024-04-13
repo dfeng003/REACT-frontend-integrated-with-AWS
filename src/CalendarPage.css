@@ -1,0 +1,27 @@
+
+.calendar-container {
+  width: 600px;
+  margin: auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.calendar-container h2{
+  color:#6282a0;
+  text-align: center;
+}
+.react-calendar .react-calendar__tile.available {
+  background-color: #5cb85c; /* Green background for available dates */
+  color: #fff; /* White text color for better visibility */
+}
+.react-calendar{
+  margin: 20px;
+}
+.submit {
+  background-color: #6282a0 !important;
+  font-weight: 900 !important;
+  text-transform: inherit !important;
+  color: white !important;
+}

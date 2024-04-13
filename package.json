@@ -12,6 +12,7 @@
     "aws-amplify": "^6.0.21",
     "date-fns": "^2.15.0",
     "react": "^16.13.1",
+    "react-calendar": "^4.8.0",
     "react-date-range": "^1.0.3",
     "react-dom": "^16.13.1",
     "react-paginate": "^8.2.0",

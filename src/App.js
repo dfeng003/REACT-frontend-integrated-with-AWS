@@ -7,6 +7,7 @@ import SearchPage from './SearchPage'
 import BecomeGuideForm from './BecomeGuideForm';
 import ProfilePage from './ProfilePage';
 import BlogPage from './Blog';
+import CalendarPage from './CalendarPage';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import {Amplify, Auth } from 'aws-amplify';
 import { withAuthenticator } from '@aws-amplify/ui-react';
@@ -49,6 +50,9 @@ function App({ signOut}) {
           </Route>
           <Route path="/guide_profile">
             <ProfilePage />
+          </Route>
+          <Route path="/calendar">
+            <CalendarPage />
           </Route>
           <Route path="/blog">
             <BlogPage />

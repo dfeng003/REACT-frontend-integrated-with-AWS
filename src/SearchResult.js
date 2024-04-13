@@ -5,10 +5,9 @@ import StarIcon from "@material-ui/icons/Star";
 
 function SearchResult({
     img,
-    attractions,
-    name,
-    description,
-    star,
+    username,
+    title,
+    content,
 }) {
     return (
         <div className='searchResult'>
@@ -17,12 +16,12 @@ function SearchResult({
 
             <div className='searchResult__info'>
                 <div className="searchResult__infoTop">
-                    <p>{attractions}</p>
-                    <h3>{name}</h3>
+                    <p>{username}</p>
+                    <h3>{title}</h3>
                     <p>____</p>
-                    <p>{description}</p>
+                    <p>{content.length > 500 ? content.substring(0, 500) + "..." : content}</p>
                 </div>
-
+            {/*
                 <div className="searchResult__infoBottom">
                     <div className="searchResult__stars">
                         <StarIcon className="searchResult__star" />
@@ -31,6 +30,7 @@ function SearchResult({
                         </p>
                     </div>
                 </div>
+            */}
             </div>
         </div>
     )

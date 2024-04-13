@@ -36,13 +36,14 @@
 }
 
 .searchResult__infoTop > h3 {
-    font-weight: 300;
+    font-weight: 500;
     margin-top: 10px;
+    color: black;
 }
 
 .searchResult__infoTop > p {
     margin-top: 10px;
-    font-size: 13px;
+    font-size: 15px;
     color: gray;
   }
   

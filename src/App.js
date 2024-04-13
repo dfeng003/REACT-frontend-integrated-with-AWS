@@ -6,6 +6,7 @@ import Footer from './Footer'
 import SearchPage from './SearchPage'
 import BecomeGuideForm from './BecomeGuideForm';
 import ProfilePage from './ProfilePage';
+import BlogPage from './Blog';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import {Amplify, Auth } from 'aws-amplify';
 import { withAuthenticator } from '@aws-amplify/ui-react';
@@ -48,6 +49,9 @@ function App({ signOut}) {
           </Route>
           <Route path="/guide_profile">
             <ProfilePage />
+          </Route>
+          <Route path="/blog">
+            <BlogPage />
           </Route>
           <Route path="/">
             <Banner />

@@ -1,0 +1,31 @@
+
+.blog-pagination {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+}
+
+.blog-pagination li {
+    display: inline-block;
+    margin: 0 5px;
+}
+
+.blog-pagination li a {
+    color: #333;
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    text-decoration: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.blog-pagination li.active a {
+    background-color: #6282a0;
+    color: #fff;
+}
+
+.blog-pagination li.disabled a {
+    pointer-events: none;
+    color: #ccc;
+}

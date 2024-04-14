@@ -10,18 +10,28 @@ function Filters ({ isOpen, onClose, onConfirm }){
   const attractions = ["Museums", "Zoos", "Aquariums", "Beaches", "Historical Sites", "Art Galleries",
                         "Amusement Parks", "Botanical Gardens", "Hiking Tracks", "Local Cuisines"]
 
-  const handleLanguageChange = (e) => {
-    setSelectedLanguages(Array.from(e.target.selectedOptions, option => option.value));
-  };
-
-  const handleAttractionChange = (e) => {
-    setSelectedAttractions(Array.from(e.target.selectedOptions, option => option.value));
+  const handleCheckboxChange = (event) => {
+    const { value, checked, name } = event.target;
+    if(name == "language"){
+      if (checked) {
+          setSelectedLanguages([...selectedLanguages, value]);
+      }else {
+          // Remove the language from the selectedLanguages array if unchecked
+          setSelectedLanguages(selectedLanguages.filter(lang => lang !== value));
+      }
+    } else {
+      if (checked) {
+          setSelectedAttractions([...selectedAttractions, value])
+        } else {
+            setSelectedAttractions(selectedAttractions.filter(lang => lang !== value));
+        }
+    }
   };
 
   const handleConfirm = () => {
     const filters = {
-      languages: selectedLanguages,
-      attractions: selectedAttractions,
+      'language': selectedLanguages,
+      'attractions': selectedAttractions,
     };
     onConfirm(filters);
     onClose();
@@ -36,7 +46,7 @@ function Filters ({ isOpen, onClose, onConfirm }){
               {languages.map((language, index) => (
                 <div key={index} className="filters-checkbox">
                   <label>
-                    <input type="checkbox" value={language} onChange={handleLanguageChange} />
+                    <input name="language" type="checkbox" value={language} onChange={handleCheckboxChange} />
                     {language}
                   </label>
                 </div>
@@ -49,7 +59,7 @@ function Filters ({ isOpen, onClose, onConfirm }){
             {attractions.map((attraction, index) => (
               <div key={index} className="filters-checkbox">
                 <label>
-                  <input type="checkbox" value={attraction} onChange={handleAttractionChange} />
+                  <input name="attraction" type="checkbox" value={attraction} onChange={handleCheckboxChange} />
                   {attraction}
                 </label>
               </div>

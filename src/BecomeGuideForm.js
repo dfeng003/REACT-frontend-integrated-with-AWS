@@ -4,14 +4,15 @@ import { uploadData, getUrl, remove } from 'aws-amplify/storage';
 import { useAuthenticator } from '@aws-amplify/ui-react';
 //import { getCurrentUser } from 'aws-amplify/auth';
 
-function BecomeGuideForm() {
-      const languages = ["English", "Chinese", "Japanese", "Korean", "Spanish", "French", "German", "Italian"];
-      const attractions = ["Museums", "Zoos", "Aquariums", "Beaches", "Historical Sites", "Art Galleries",
+function BecomeGuideForm({ username }) {
+    const languages = ["English", "Chinese", "Japanese", "Korean", "Spanish", "French", "German", "Italian"];
+    const attractions = ["Museums", "Zoos", "Aquariums", "Beaches", "Historical Sites", "Art Galleries",
                             "Amusement Parks", "Botanical Gardens", "Hiking Tracks", "Local Cuisines"]
+    const [selectedLanguages, setSelectedLanguages] = useState([]);
+    const [selectedAttractions, setSelectedAttractions] = useState([]);
 
-    //TODO: get current username
     const [formData, setFormData] = useState({
-      username:'',
+      username: username,
       name: '',
       gender: '',
       email:'',
@@ -28,10 +29,33 @@ function BecomeGuideForm() {
       setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
+    const handleCheckboxChange = (event) => {
+      const { value, checked, name } = event.target;
+      if(name == "language"){
+        if (checked) {
+            setSelectedLanguages([...selectedLanguages, value]);
+        }else {
+            // Remove the language from the selectedLanguages array if unchecked
+            setSelectedLanguages(selectedLanguages.filter(lang => lang !== value));
+        }
+      } else {
+        if (checked) {
+            setSelectedAttractions([...selectedAttractions, value])
+          } else {
+              setSelectedAttractions(selectedAttractions.filter(lang => lang !== value));
+          }
+      }
+    };
+
     const handleSubmit = (e) => {
         e.preventDefault();
         // TODO: Handle form submission here
-        console.log(formData);
+        const updatedFormData = {
+              ...formData,
+              language: selectedLanguages,
+              attractions: selectedAttractions
+            };
+        console.log(updatedFormData);
     };
 
 //TODO: fix file upload, try adding identitypool
@@ -60,7 +84,6 @@ function BecomeGuideForm() {
             <label className="form-label">Name:</label>
             <input
               type="text"
-              id="name"
               name="name"
               className="form-input"
               value={formData.name}
@@ -71,7 +94,6 @@ function BecomeGuideForm() {
           <div className="form-group">
               <label  className="form-label">Description:</label>
               <textarea
-                id="description"
                 name="description"
                 className="form-input"
                 value={formData.description}
@@ -83,7 +105,6 @@ function BecomeGuideForm() {
             <label className="form-label">Email:</label>
             <input
                 type="text"
-                id="email"
                 name="email"
                 className="form-input"
                 value={formData.email}
@@ -95,7 +116,6 @@ function BecomeGuideForm() {
             <label className="form-label">Phone:</label>
             <input
               type="text"
-              id="phone"
               name="phone"
               className="form-input"
               value={formData.phone}
@@ -106,7 +126,6 @@ function BecomeGuideForm() {
           <div className="form-group">
             <label className="form-label">Gender:</label>
             <select
-              id="gender"
               name="gender"
               className="form-input"
               value={formData.gender}
@@ -124,8 +143,9 @@ function BecomeGuideForm() {
               {languages.map((language, index) => (
                 <div key={index} className="filters-checkbox">
                   <label>
-                    <input type="checkbox" value={language} onChange={handleChange} />
-                    {language}
+                    <input  type="checkbox" value={language} name="language"
+                          onChange={handleCheckboxChange}/>
+                  {language}
                   </label>
                 </div>
               ))}
@@ -137,7 +157,8 @@ function BecomeGuideForm() {
                 {attractions.map((attraction, index) => (
                   <div key={index} className="form-checkbox">
                     <label>
-                      <input type="checkbox" value={attraction} onChange={handleChange} />
+                      <input  type="checkbox" value={attraction} name="attraction"
+                              onChange={handleCheckboxChange}/>
                       {attraction}
                     </label>
                   </div>

@@ -46,7 +46,7 @@ function App({ signOut, user}) {
             <SearchPage />
           </Route>
           <Route path="/become_guide">
-            <BecomeGuideForm />
+            <BecomeGuideForm username={user.username}/>
           </Route>
           <Route path="/guide_profile">
             <ProfilePage />

@@ -3,6 +3,7 @@ import './SearchPage.css';
 import { Button } from "@material-ui/core";
 import Card from "./Card";
 import ReactPaginate from 'react-paginate';
+import { useLocation } from 'react-router-dom';
 
 
 function SearchPage() {
@@ -28,6 +29,7 @@ function SearchPage() {
                               "total_page": 7
 }
 
+    const location = useLocation();
     const [guides, setGuides] = useState([]);
     const [pageCount, setPageCount] = useState(0);
     const [currentPage, setCurrentPage] = useState(0);
@@ -35,18 +37,25 @@ function SearchPage() {
     useEffect(() => {
             // Fetch guides when the component mounts or when currentPage changes
             fetchGuides(currentPage);
-        }, [currentPage]);
+        }, [currentPage, location.search]);
 
     async function fetchGuides(page) {
-        try {
-//            const response = await fetch(`/api/guides?page=${page + 1}&limit=10`);
-//            const data = await response.json();
-            const data = mockResponse
-            setGuides(data.guides);
-            setPageCount(data.total_page);
-        } catch (error) {
-            console.error('Error fetching guides:', error);
-        }
+        const data = mockResponse
+        setGuides(data.guides);
+        setPageCount(data.total_page);
+//        const searchParams = new URLSearchParams(location.search);
+
+//        fetch(`/api/guides/search?${searchParams}`)
+//              .then(response => {
+//                return response.json();
+//              })
+//              .then(data => {
+//                setGuides(data.guides);
+//                setPageCount(data.total_page);
+//              })
+//              .catch(error => {
+//                      console.error('Error fetching guides:', error);
+//                    });
     }
 
     function handlePageChange(selectedPage) {

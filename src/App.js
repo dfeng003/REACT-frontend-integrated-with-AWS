@@ -8,6 +8,7 @@ import BecomeGuideForm from './BecomeGuideForm';
 import ProfilePage from './ProfilePage';
 import BlogPage from './Blog';
 import CalendarPage from './CalendarPage';
+import PostBlogForm from './PostBlogForm';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import {Amplify, Auth } from 'aws-amplify';
 import { withAuthenticator } from '@aws-amplify/ui-react';
@@ -56,6 +57,9 @@ function App({ signOut, user}) {
           </Route>
           <Route path="/blog">
             <BlogPage />
+          </Route>
+          <Route path="/post_blog">
+            <PostBlogForm username={user.username}/>
           </Route>
           <Route path="/">
             <Banner />

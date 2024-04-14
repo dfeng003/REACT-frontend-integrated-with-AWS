@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import './Blog.css';
 import { Button } from "@material-ui/core";
+import AddIcon from '@material-ui/icons/Add';
 import SearchResult from "./SearchResult";
 import ReactPaginate from 'react-paginate';
-
+import { useHistory } from "react-router-dom";
 
 function BlogPage() {
     const mockResponse = {"blogs": [
@@ -23,7 +24,7 @@ function BlogPage() {
                          "total_page": 5
                          }
 
-
+    const history = useHistory();
     const [blogs, setBlogs] = useState([]);
     const [pageCount, setPageCount] = useState(0);
     const [currentPage, setCurrentPage] = useState(0);
@@ -50,15 +51,18 @@ function BlogPage() {
     }
 
     return (
-        <div className='blogPage'>
-            <ReactPaginate
-                pageCount={pageCount}
-                pageRangeDisplayed={5}
-                marginPagesDisplayed={2}
-                onPageChange={handlePageChange}
-                containerClassName={'blog-pagination'}
-                activeClassName={'active'}
-            />
+        <div className='bloge'>
+            <div className='blog__header'>
+                <AddIcon className='blog__post' onClick={() => history.push('/post_blog')} />
+                <ReactPaginate
+                    pageCount={pageCount}
+                    pageRangeDisplayed={5}
+                    marginPagesDisplayed={2}
+                    onPageChange={handlePageChange}
+                    containerClassName={'blog-pagination'}
+                    activeClassName={'active'}
+                />
+            </div>
             {blogs.map(blog => (
                 <SearchResult
                     img={blog.photoUrl}

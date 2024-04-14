@@ -1,4 +1,16 @@
 
+.blog__header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.blog__post {
+    background-color: #6282a0;
+    color: white;
+    margin-right: 20px;
+}
+
 .blog-pagination {
     display: flex;
     justify-content: center;

@@ -9,7 +9,6 @@
 
 .profile h2 {
   margin-bottom: 20px;
-  color: #333;
 }
 
 .profile div {
@@ -18,6 +17,7 @@
 
 .profile strong {
   font-weight: bold;
+  color: #6282a0;
 }
 
 .profile ul {
@@ -26,19 +26,7 @@
 }
 
 .profile li {
-  margin-top: 5px;
-}
-
-/* Style for list items */
-.profile li:before {
-  content: "•"; /* Bullet character */
-  color: #333;
+  margin-bottom: 5px;
   display: inline-block;
-  width: 1em;
-  margin-left: -1em;
-}
-
-/* Style for alternating list items */
-.profile li:nth-child(even):before {
-  color: #ccc;
+  width: 25%; /* Set width to 25% for four items per row */
 }

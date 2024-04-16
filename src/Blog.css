@@ -9,6 +9,7 @@
     background-color: #6282a0;
     color: white;
     margin-right: 20px;
+    cursor: pointer;
 }
 
 .blog-pagination {

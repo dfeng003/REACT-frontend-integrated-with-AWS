@@ -21,7 +21,14 @@ Amplify.configure({
            userPoolClientId: "1k6krv82nbk8ph1adu726trevj",
            region: "us-east-1"
            // TODO: need identitypoolid
-       }
+       },
+//       API:{
+//       endpoints: [
+//             {
+//               name: 'YourAPIName',
+//               endpoint: '',
+//             },
+//       }
    },
    Storage: {
               // Configuration for S3 storage
@@ -32,6 +39,7 @@ Amplify.configure({
    }
    });
 
+export const API_KEY = "zCkVXvWNif3iMpyd6iwLw68S5CY5BYkd1rB7nFfz";
 
 function App({ signOut, user}) {
 //When withAuthenticator wraps the App component, it automatically injects the signOut method into the props of the component.

@@ -7,6 +7,7 @@ import { NavLink, Link } from "react-router-dom";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import { Button } from "@material-ui/core";
+import {API_KEY} from './App.js';
 
 function Header({ signOut, username }) {
 
@@ -21,9 +22,9 @@ function Header({ signOut, username }) {
         // check if user is registered as a guide
         async function checkGuideStatus() {
           try {
-//            const response = await fetch(`/api/guide/${user.username}/profile`);
-//            const data = response.json()
-              const data = mockResponse;
+            const response = await fetch(`https://460f7cbimf.execute-api.us-east-1.amazonaws.com/www/api/guide/testUser2/profile`, {headers:{"x-api-key": API_KEY }});
+            const data = response.json()
+//              const data = mockResponse;
               if(Object.keys(data).length != 0){
                 setIsGuide(true);
               }
@@ -66,7 +67,7 @@ function Header({ signOut, username }) {
                     <Avatar style={{ backgroundColor: '#6282a0' }} onClick={handleAvatarClick}>{username.charAt(0)}</Avatar>
                     {showDropdown && (
                         <div className="avatar_dropdown">
-                           <Button className="dropdown_item" onClick={() => history.push('/guide_profile')}>Guide Profile</Button>
+                           <Button className="dropdown_item" onClick={() => history.push(`/guide_profile?username=${username}`)}>Guide Profile</Button>
                            <Button className="dropdown_item" onClick={signOut}>Sign Out</Button>
                         </div>
                      )}

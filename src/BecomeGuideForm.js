@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './BecomeGuideForm.css'
 import { uploadData, getUrl, remove } from 'aws-amplify/storage';
 import { useAuthenticator } from '@aws-amplify/ui-react';
-//import { getCurrentUser } from 'aws-amplify/auth';
+import {URL} from "./App";
 
 function BecomeGuideForm({ username }) {
     const languages = ["English", "Chinese", "Japanese", "Korean", "Spanish", "French", "German", "Italian"];
@@ -46,16 +46,24 @@ function BecomeGuideForm({ username }) {
           }
       }
     };
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        // TODO: Handle form submission here
-        const updatedFormData = {
-              ...formData,
-              language: selectedLanguages,
-              attractions: selectedAttractions
-            };
-        console.log(updatedFormData);
+    const handleSubmit = async (e) => {
+      e.preventDefault();
+      const updatedFormData = {
+                    ...formData,
+                    language: selectedLanguages,
+                    attractions: selectedAttractions
+                  };
+      try {
+        const response = await fetch(`${URL}/api/register_guide`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(updatedFormData)
+        });
+      } catch (error) {
+        console.error('Error registering guide:', error);
+      }
     };
 
 //TODO: fix file upload, try adding identitypool

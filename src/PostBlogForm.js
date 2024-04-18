@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import './PostBlogForm.css'
 import { uploadData, getUrl, remove } from 'aws-amplify/storage';
 import { useAuthenticator } from '@aws-amplify/ui-react';
+import {URL} from "./App";
+
 
 function PostBlogForm({ username }) {
 
@@ -18,10 +20,19 @@ function PostBlogForm({ username }) {
       setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        // TODO: Handle form submission here
-        console.log(formData);
+    const handleSubmit = async (e) => {
+      e.preventDefault();
+      try {
+        const response = await fetch(`${URL}/api/blogs`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(formData)
+        });
+      } catch (error) {
+        console.error('Error publishing blog:', error);
+      }
     };
 
     //TODO: fix file upload, try adding identitypool

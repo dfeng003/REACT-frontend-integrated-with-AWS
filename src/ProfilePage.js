@@ -2,15 +2,17 @@ import React, { useState, useEffect } from 'react';
 import './ProfilePage.css'
 import { useParams } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
+import {URL} from "./App";
+
 
 function ProfilePage(){
-    const mockResponse = {
-      name: 'John Doe',
-      gender: 'Male',
-      language: ['English', 'French'],
-      attractions: ["Museums", "Zoos", "Aquariums", "Beaches"]
-    };
-    const [profile, setProfile] = useState({name: '', gender: '', language: [], attractions: []});
+//    const mockResponse = {
+//      name: 'John Doe',
+//      gender: 'Male',
+//      language: ['English', 'French'],
+//      attractions: ["Museums", "Zoos", "Aquariums", "Beaches"]
+//    };
+    const [profile, setProfile] = useState({name: '', gender: '', languages: [], attractions: []});
     const location = useLocation();
 
     useEffect(() => {
@@ -18,21 +20,15 @@ function ProfilePage(){
             }, []);
 
     async function fetchProfile() {
-        const data = mockResponse;
-        setProfile(data);
-
-//        const searchParams = new URLSearchParams(location.search);
-//        const username = searchParams.get('username');
-//        fetch(`/api/guide/search/${username}/profile`)
-//              .then(response => {
-//                return response.json();
-//              })
-//              .then(data => {
-//                setProfile(data);
-//              })
-//              .catch(error => {
-//                      console.error('Error fetching profile:', error);
-//                    });
+        try{
+            const searchParams = new URLSearchParams(location.search);
+            const username = searchParams.get('username');
+            const response = await fetch(`${URL}/api/guide/${username}/profile`)
+            const data = await response.json();
+            setProfile(data);
+        } catch (error) {
+            console.log("Error fetching profile: ", error);
+        }
     }
 
   return (
@@ -45,7 +41,7 @@ function ProfilePage(){
           <div>
             <strong>Languages:</strong>
             <ul>
-              {profile.language.map((lan, index) => (
+              {profile.languages.map((lan, index) => (
                 <li key={index}>{lan}</li>
               ))}
             </ul>

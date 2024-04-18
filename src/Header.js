@@ -7,11 +7,11 @@ import { NavLink, Link } from "react-router-dom";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import { Button } from "@material-ui/core";
-import {API_KEY} from './App.js';
+import {URL} from "./App";
 
 function Header({ signOut, username }) {
 
-    const mockResponse = {};
+//    const mockResponse = {};
 
     const [isGuide, setIsGuide] = useState(false);
     const history = useHistory();
@@ -20,10 +20,10 @@ function Header({ signOut, username }) {
 
     useEffect(() => {
         // check if user is registered as a guide
-        async function checkGuideStatus() {
+        const checkGuideStatus = async () => {
           try {
-            const response = await fetch(`https://460f7cbimf.execute-api.us-east-1.amazonaws.com/www/api/guide/testUser2/profile`, {headers:{"x-api-key": API_KEY }});
-            const data = response.json()
+            const response = await fetch(`${URL}/api/guide/${username}/profile`);
+            const data = await response.json();
 //              const data = mockResponse;
               if(Object.keys(data).length != 0){
                 setIsGuide(true);
@@ -31,7 +31,7 @@ function Header({ signOut, username }) {
           } catch (error) {
             console.error('Error checking guide status:', error);
           }
-        }
+        };
 
         checkGuideStatus();
       }, []);

@@ -39,7 +39,7 @@ Amplify.configure({
    }
    });
 
-export const API_KEY = "zCkVXvWNif3iMpyd6iwLw68S5CY5BYkd1rB7nFfz";
+export const URL = "https://460f7cbimf.execute-api.us-east-1.amazonaws.com/www";
 
 function App({ signOut, user}) {
 //When withAuthenticator wraps the App component, it automatically injects the signOut method into the props of the component.
@@ -61,7 +61,7 @@ function App({ signOut, user}) {
             <ProfilePage />
           </Route>
           <Route path="/calendar">
-            <CalendarPage />
+            <CalendarPage guideUsername={user.username}/>
           </Route>
           <Route path="/blog">
             <BlogPage />

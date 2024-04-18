@@ -5,24 +5,25 @@ import AddIcon from '@material-ui/icons/Add';
 import SearchResult from "./SearchResult";
 import ReactPaginate from 'react-paginate';
 import { useHistory } from "react-router-dom";
+import {URL} from "./App";
 
 function BlogPage() {
-    const mockResponse = {"blogs": [
-                             {
-                                 "username": "testUser",
-                                 "title": "Title of the blog",
-                                 "content": "This is a long paragraph. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-                                 "photoUrl": "https://www.expatkings.com/wp-content/uploads/2018/10/Airbnb-rental-tips.-Hostmaker-1-620x349.jpg"
-                               },
-                               {
-                                "username": "testUser2",
-                                "title": "Title of the blog2",
-                                "content": "Content of the blog2",
-                                "photoUrl": "https://www.expatkings.com/wp-content/uploads/2018/10/Airbnb-rental-tips.-Hostmaker-1-620x349.jpg"
-                              }
-                              ],
-                         "total_page": 5
-                         }
+//    const mockResponse = {"blogs": [
+//                             {
+//                                 "username": "testUser",
+//                                 "title": "Title of the blog",
+//                                 "content": "This is a long paragraph. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+//                                 "photoUrl": "https://www.expatkings.com/wp-content/uploads/2018/10/Airbnb-rental-tips.-Hostmaker-1-620x349.jpg"
+//                               },
+//                               {
+//                                "username": "testUser2",
+//                                "title": "Title of the blog2",
+//                                "content": "Content of the blog2",
+//                                "photoUrl": "https://www.expatkings.com/wp-content/uploads/2018/10/Airbnb-rental-tips.-Hostmaker-1-620x349.jpg"
+//                              }
+//                              ],
+//                         "total_page": 5
+//                         }
 
     const history = useHistory();
     const [blogs, setBlogs] = useState([]);
@@ -36,9 +37,9 @@ function BlogPage() {
 
     async function fetchBlogs(page) {
         try {
-//            const response = await fetch(`/api/blogs?page=${page + 1}&limit=10`);
-//            const data = await response.json();
-            const data = mockResponse
+            const response = await fetch(`${URL}/api/blogs?page=${page + 1}&limit=10`);
+            const data = await response.json();
+//            const data = mockResponse
             setBlogs(data.blogs);
             setPageCount(data.total_page);
         } catch (error) {

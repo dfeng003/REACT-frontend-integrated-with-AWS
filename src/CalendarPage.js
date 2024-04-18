@@ -3,9 +3,10 @@ import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import './CalendarPage.css';
 import { Button} from "@material-ui/core";
+import {URL} from "./App";
 
 function CalendarPage({ guideUsername }) {
-    const mockResponse = {"available_dates": ["2024-04-12", "2024-04-17", "2024-04-18"]}
+//    const mockResponse = {"available_dates": ["2024-04-12", "2024-04-17", "2024-04-18"]}
 
     const [availableDates, setAvailableDates] = useState([]);
 
@@ -16,9 +17,8 @@ function CalendarPage({ guideUsername }) {
 
   const fetchAvailableDates = async () => {
     try {
-//      const response = await fetch(`/api/guide/${guideUsername}/get_available_dates`);
-//      const data = await response.json();
-      const data = mockResponse
+      const response = await fetch(`${URL}/api/guide/${guideUsername}/available_dates`);
+      const data = await response.json();
       setAvailableDates(data.available_dates);
     } catch (error) {
       console.error('Error fetching available dates:', error);
@@ -47,7 +47,7 @@ function CalendarPage({ guideUsername }) {
 
   const handleSubmit = async () => {
       try {
-        const response = await fetch(`/api/guide/${guideUsername}/set_available_dates`, {
+        const response = await fetch(`${URL}/api/guide/${guideUsername}/set_available_dates`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'

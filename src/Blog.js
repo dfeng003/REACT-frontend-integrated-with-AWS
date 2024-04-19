@@ -66,7 +66,7 @@ function BlogPage() {
             </div>
             {blogs.map(blog => (
                 <SearchResult
-                    img={blog.photoUrl}
+                    img={blog.photoUrl || "https://sgguide.s3.amazonaws.com/public/merlionpark.jpeg"}
                     username={blog.username}
                     title={blog.title}
                     content={blog.content}

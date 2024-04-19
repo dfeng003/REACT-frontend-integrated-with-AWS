@@ -19,16 +19,9 @@ Amplify.configure({
        Cognito:{
            userPoolId: "us-east-1_8465UNBWQ",
            userPoolClientId: "1k6krv82nbk8ph1adu726trevj",
-           region: "us-east-1"
-           // TODO: need identitypoolid
+           region: "us-east-1",
+           identityPoolId: "ap-southeast-2:5ea5afd5-effd-4437-aa29-c32d9338df96"
        },
-//       API:{
-//       endpoints: [
-//             {
-//               name: 'YourAPIName',
-//               endpoint: '',
-//             },
-//       }
    },
    Storage: {
               // Configuration for S3 storage

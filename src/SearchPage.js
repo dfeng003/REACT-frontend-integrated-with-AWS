@@ -31,7 +31,7 @@ function SearchPage() {
 
     const location = useLocation();
     const [guides, setGuides] = useState([]);
-    const [pageCount, setPageCount] = useState(3);
+    const [pageCount, setPageCount] = useState(1);
     const [currentPage, setCurrentPage] = useState(0);
 
     useEffect(() => {

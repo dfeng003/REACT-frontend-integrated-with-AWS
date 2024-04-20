@@ -1,12 +1,24 @@
 .profile {
-  max-width: 500px;
+  max-width:1000px;
   margin: 0 auto;
   padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  background-color: #f9f9f9;
+  display: flex;
+  flex-direction: row;
 }
 
+.paragraphs {
+    display: flex;
+    flex-direction: column;
+}
+
+.review_title{
+    margin-left: 10px
+}
+
+.reviews{
+    max-height: 500px;
+    overflow: auto;
+}
 .profile h2 {
   margin-bottom: 20px;
 }

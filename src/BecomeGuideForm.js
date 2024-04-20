@@ -51,7 +51,8 @@ function BecomeGuideForm({ username }) {
       const updatedFormData = {
                     ...formData,
                     language: selectedLanguages,
-                    attractions: selectedAttractions
+                    attractions: selectedAttractions,
+                    photoUrl: `https://sgguide.s3.amazonaws.com/public/${file.name}`
                   };
       try {
         const response = await fetch(`${URL}/api/register_guide`, {
@@ -66,7 +67,6 @@ function BecomeGuideForm({ username }) {
       }
     };
 
-//TODO: fix file upload, try adding identitypool
   const handleFileChange = (e) => {
     setFile(e.target.files[0]);
   };

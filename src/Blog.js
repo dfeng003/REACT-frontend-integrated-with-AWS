@@ -8,7 +8,7 @@ import { useHistory } from "react-router-dom";
 import {URL} from "./App";
 
 function BlogPage() {
-//    const mockResponse = {"blogs": [
+//    const sampleResponse = {"blogs": [
 //                             {
 //                                 "username": "testUser",
 //                                 "title": "Title of the blog",
@@ -39,7 +39,6 @@ function BlogPage() {
         try {
             const response = await fetch(`${URL}/api/blogs?page=${page + 1}&limit=10`);
             const data = await response.json();
-//            const data = mockResponse
             setBlogs(data.blogs);
             setPageCount(data.total_page);
         } catch (error) {

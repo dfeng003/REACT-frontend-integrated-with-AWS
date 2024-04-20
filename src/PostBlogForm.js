@@ -23,6 +23,10 @@ function PostBlogForm({ username }) {
     const handleSubmit = async (e) => {
       e.preventDefault();
       try {
+      const updatedFormData = {
+                          ...formData,
+                          photoUrl: `https://sgguide.s3.amazonaws.com/public/${file.name}`
+                        };
         const response = await fetch(`${URL}/api/blogs`, {
           method: 'POST',
           headers: {
@@ -35,7 +39,6 @@ function PostBlogForm({ username }) {
       }
     };
 
-    //TODO: fix file upload, try adding identitypool
     const handleFileChange = (e) => {
       setFile(e.target.files[0]);
     };

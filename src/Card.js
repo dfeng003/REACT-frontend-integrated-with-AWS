@@ -2,9 +2,9 @@ import React from 'react';
 import './Card.css'
 import StarIcon from "@material-ui/icons/Star";
 
-function Card({ is_detailed, src, title, gender, email, phone, language, attraction, description, score, widthValue=200}) {
+function Card({ onClick , is_detailed, src, title, gender, email, phone, language, attraction, description, score, widthValue=200}) {
     return (
-        <div className='card'>
+        <div onClick={onClick} className='card'>
            <div className="card__image">
                     <img src={src} alt="" />
            </div>

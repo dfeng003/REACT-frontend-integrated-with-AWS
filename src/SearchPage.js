@@ -5,6 +5,7 @@ import Card from "./Card";
 import ReactPaginate from 'react-paginate';
 import { useLocation } from 'react-router-dom';
 import {URL} from "./App";
+import { useHistory } from "react-router-dom";
 
 function SearchPage() {
 //    const mockResponse = { "guides": [
@@ -28,7 +29,7 @@ function SearchPage() {
 //                                  }],
 //                              "total_page": 7
 //}
-
+    const history = useHistory();
     const location = useLocation();
     const [guides, setGuides] = useState([]);
     const [pageCount, setPageCount] = useState(1);
@@ -68,7 +69,7 @@ function SearchPage() {
             />
             <div className='searchPage__guides'>
                 {guides.map(guide => (
-                    <Card
+                    <Card onClick={() => history.push(`/guide_profile?username=${guide.username}`)}
                         src={guide.photoUrl}
                         title={guide.name}
                         description={guide.description}

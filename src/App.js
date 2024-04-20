@@ -34,6 +34,11 @@ Amplify.configure({
 
 export const URL = "https://460f7cbimf.execute-api.us-east-1.amazonaws.com/www";
 
+const signUpConfig = {
+    signUpAttributes:['email']
+};
+
+
 function App({ signOut, user}) {
 //When withAuthenticator wraps the App component, it automatically injects the signOut method into the props of the component.
 
@@ -73,4 +78,6 @@ function App({ signOut, user}) {
   );
 }
 
-export default withAuthenticator(App);
+export default withAuthenticator(App, {
+                                        signUpAttributes: ['email']
+                                      });

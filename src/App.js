@@ -42,8 +42,8 @@ const signUpConfig = {
 
 
 function App({ signOut, user}) {
-//When withAuthenticator wraps the App component, it automatically injects the signOut method into the props of the component.
-
+// When withAuthenticator wraps the App component, it automatically injects the signOut method into the props of the component.
+// To run the app, use npm start
   return (
     <div className="app">
       <Router>

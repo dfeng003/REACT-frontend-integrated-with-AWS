@@ -6,7 +6,7 @@ import {URL} from "./App";
 
 
 function PostBlogForm({ username }) {
-
+// Page to write a blog
     const [formData, setFormData] = useState({
       username: username,
       title: '',

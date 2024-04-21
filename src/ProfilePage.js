@@ -7,6 +7,7 @@ import Card from "./Card";
 import TextCard from "./TextCard";
 
 function ProfilePage(){
+// page to display guide profile information
     const [profile, setProfile] = useState({name: '', gender: '', languages: [], attractions: [], photoUrl:'', description:'', score:0});
     const location = useLocation();
     const [reviews, setReviews] = useState([]);

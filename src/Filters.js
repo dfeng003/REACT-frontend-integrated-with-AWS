@@ -4,6 +4,7 @@ import './Filters.css'
 import { Button} from "@material-ui/core";
 
 function Filters ({ isOpen, onClose, onConfirm }){
+// UI to allow users to input filters
   const [selectedLanguages, setSelectedLanguages] = useState([]);
   const [selectedAttractions, setSelectedAttractions] = useState([]);
   const languages = ["English", "Chinese", "Japanese", "Korean", "Spanish", "French", "German", "Italian"];

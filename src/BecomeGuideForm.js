@@ -5,6 +5,7 @@ import { useAuthenticator } from '@aws-amplify/ui-react';
 import {URL} from "./App";
 
 function BecomeGuideForm({ username }) {
+    // For a user to register as a guide
     const languages = ["English", "Chinese", "Japanese", "Korean", "Spanish", "French", "German", "Italian"];
     const attractions = ["Museums", "Zoos", "Aquariums", "Beaches", "Historical Sites", "Art Galleries",
                             "Amusement Parks", "Botanical Gardens", "Hiking Tracks", "Local Cuisines"]
@@ -47,6 +48,7 @@ function BecomeGuideForm({ username }) {
       }
     };
     const handleSubmit = async (e) => {
+      // update the formdata with selected fields and send POST request
       e.preventDefault();
       const updatedFormData = {
                     ...formData,
@@ -72,6 +74,7 @@ function BecomeGuideForm({ username }) {
   };
 
   const handleUpload = async () => {
+    // upload profile photo to S3 using IdentifyPool credentials
     try {
     const result = await uploadData({
         key: file.name,

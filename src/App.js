@@ -16,6 +16,7 @@ import '@aws-amplify/ui-react/styles.css';
 
 Amplify.configure({
    Auth: {
+        // Configuration for Cognito for user authentication and secure image upload
        Cognito:{
            userPoolId: "us-east-1_8465UNBWQ",
            userPoolClientId: "1k6krv82nbk8ph1adu726trevj",
@@ -32,6 +33,7 @@ Amplify.configure({
    }
    });
 
+// API gateway url
 export const URL = "https://460f7cbimf.execute-api.us-east-1.amazonaws.com/www";
 
 const signUpConfig = {

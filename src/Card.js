@@ -3,6 +3,7 @@ import './Card.css'
 import StarIcon from "@material-ui/icons/Star";
 
 function Card({ onClick , is_detailed, src, title, gender, email, phone, language, attraction, description, score, widthValue=200}) {
+// to display information nicely
     return (
         <div onClick={onClick} className='card'>
            <div className="card__image">

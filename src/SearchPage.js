@@ -8,6 +8,8 @@ import {URL} from "./App";
 import { useHistory } from "react-router-dom";
 
 function SearchPage() {
+// page to display guide search results
+
 //    const mockResponse = { "guides": [
 //                                  {
 //                                      "username": "testUser1",

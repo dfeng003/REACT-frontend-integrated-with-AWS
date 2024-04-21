@@ -10,8 +10,7 @@ import { Button } from "@material-ui/core";
 import {URL} from "./App";
 
 function Header({ signOut, username }) {
-
-//    const mockResponse = {};
+// Navigation, profile management
 
     const [isGuide, setIsGuide] = useState(false);
     const history = useHistory();

@@ -6,7 +6,8 @@ import { Button} from "@material-ui/core";
 import {URL} from "./App";
 
 function CalendarPage({ guideUsername }) {
-//    const mockResponse = {"available_dates": ["2024-04-12", "2024-04-17", "2024-04-18"]}
+// Allows the registered guides to manage their available dates.
+// sample response: {"available_dates": ["2024-04-12", "2024-04-17", "2024-04-18"]}
 
     const [availableDates, setAvailableDates] = useState([]);
 

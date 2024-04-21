@@ -10,6 +10,7 @@ import 'rsuite/DateRangePicker/styles/index.css';
 const { beforeToday,} = DateRangePicker;
 
 function Banner() {
+    // Includes filter input bars and search button to search for guides
     const history = useHistory();
     const [isFiltersOpen, setIsFiltersOpen] = useState(false);
     const [selectedFilters, setSelectedFilters] = useState({});
@@ -25,6 +26,7 @@ function Banner() {
     };
 
     const handleSearch = () => {
+        // format start and end to iso string, considering the timezone difference.
         const start_iso = new Date(dateRange[0].getTime() - (dateRange[0].getTimezoneOffset() * 60000)).toISOString().substr(0, 10);
         const end_iso = new Date(dateRange[1].getTime() - (dateRange[1].getTimezoneOffset() * 60000)).toISOString().substr(0, 10);
         const queryParams = {
